@@ -22,10 +22,10 @@ export const Navigation = memo(() => {
         <Stack.Screen
           name={ROUTES.TAB_NAVIGATION}
           component={TabNavigation}
-          options={{
-            headerShown: false,
-            animation: 'slide_from_right',
-          }}
+          // options={{
+          //   headerShown: false,
+          //   animation: 'slide_from_right',
+          // }}
         />
       </Stack.Navigator>
     </NavigationContainer>
