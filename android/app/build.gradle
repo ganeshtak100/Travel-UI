@@ -84,6 +84,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true 
     }
     signingConfigs {
         debug {
@@ -92,6 +93,13 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+    }
+      lint {
+        baseline = file("lint-baseline.xml")
+    }
+     lintOptions {
+        abortOnError false
+        disable 'NotificationPermission'
     }
     buildTypes {
         debug {

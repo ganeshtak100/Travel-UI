@@ -1,33 +1,34 @@
-import React, {memo} from 'react'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {Text, View} from 'react-native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React, {memo} from 'react';
+import {Text, View} from 'react-native';
 // import {Icons} from 'assets/SvgIcon'
 // import {COLORS} from 'utils/colors'
-import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
-import { ROUTES ,ROUTES_PARAMS} from '@constants/routes'
-import { COLORS } from '@constants/colors'
-import { styling } from './styles'
-import Home from '@screens/Home'
-import Explore from '@screens/Explore'
-import LiveEvent from '@screens/LiveEvent'
-import Saved from '@screens/Saved'
-import Profile from '@screens/Profile'
+import {COLORS} from '@constants/colors';
+import {ROUTES, ROUTES_PARAMS} from '@constants/routes';
+// import {
+//   CardStyleInterpolators,
+//   createStackNavigator,
+// } from '@react-navigation/stack';
+// import {createStackNavigator} from '@react-navigation/stack';
+import Explore from '@screens/Explore';
+import Home from '@screens/Home';
+import LiveEvent from '@screens/LiveEvent';
+import Profile from '@screens/Profile';
+import Saved from '@screens/Saved';
+import {styling} from './styles';
 
-const Tab = createBottomTabNavigator<AppParamList>()
-const Stack = createStackNavigator<ROUTES_PARAMS>()
+const Tab = createBottomTabNavigator<AppParamList>();
+// const Stack = createStackNavigator<ROUTES_PARAMS>();
 interface ITabBarIconParams {
-  focused: boolean
-  color: string
-  size: number
+  focused: boolean;
+  color: string;
+  size: number;
 }
-const styles = styling(true, 20, 20)
+const styles = styling(true, 20, 20);
 
 const PrivateStack = () => {
-  return (
-    <>
-    </>
-  )
-}
+  return <></>;
+};
 
 const TabNavigation = () => {
   return (
@@ -41,39 +42,33 @@ const TabNavigation = () => {
         tabBarStyle: styles.tabBarStyle,
         tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarHideOnKeyboard: true,
-      }}
-    >
+      }}>
       <Tab.Screen
         name={ROUTES.HOME}
         component={Home}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: 'Home',
           headerShown: false,
           lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return <Icons.HomeIcon color={focused ? COLORS.primary : COLORS.darkGray} />
-        //   },
+          //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
+          //     return <Icons.HomeIcon color={focused ? COLORS.primary : COLORS.darkGray} />
+          //   },
         }}
       />
       <Tab.Screen
         name={ROUTES.EXPLORE}
         component={Explore}
         options={{
-          tabBarLabel: "Explore",
+          tabBarLabel: 'Explore',
           headerShown: false,
           lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <>
-        //         <Icons.ChargePlug color={focused ? COLORS.primary : COLORS.darkGray} />
-        //         {chargeVal !== null && (
-        //           <View style={styles.valueContainer}>
-        //             <Text style={styles.valueTxt}>{chargeVal}</Text>
-        //           </View>
-        //         )}
-        //       </>
-        //     )
-        //   },
+          //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
+          //     return (
+          //       <>
+          //         <Icons.ChargePlug color={focused ? COLORS.primary : COLORS.darkGray} />
+          //       </>
+          //     )
+          //   },
         }}
       />
       <Tab.Screen
@@ -83,9 +78,9 @@ const TabNavigation = () => {
           tabBarLabel: 'Live Events',
           headerShown: false,
           lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return <Icons.Scan color={focused ? COLORS.primary : COLORS.darkGray} widthSize={25} heightSize={25} />
-        //   },
+          //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
+          //     return <Icons.Scan color={focused ? COLORS.primary : COLORS.darkGray} widthSize={25} heightSize={25} />
+          //   },
         }}
       />
       <Tab.Screen
@@ -95,11 +90,11 @@ const TabNavigation = () => {
           tabBarLabel: 'Saved',
           headerShown: false,
           lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.ChargePoint color={focused ? COLORS.primary : COLORS.darkGray} widthSize={24} heightSize={24} />
-        //     )
-        //   },
+          //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
+          //     return (
+          //       <Icons.Point color={focused ? COLORS.primary : COLORS.darkGray} widthSize={24} heightSize={24} />
+          //     )
+          //   },
         }}
       />
       <Tab.Screen
@@ -109,15 +104,15 @@ const TabNavigation = () => {
           tabBarLabel: 'Profile',
           headerShown: false,
           lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.WalletIcon color={focused ? COLORS.primary : COLORS.darkGray} widthSize={20} heightSize={20} />
-        //     )
-        //   },
+          //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
+          //     return (
+          //       <Icons.WalletIcon color={focused ? COLORS.primary : COLORS.darkGray} widthSize={20} heightSize={20} />
+          //     )
+          //   },
         }}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
 
-export {TabNavigation}
+export {TabNavigation};
