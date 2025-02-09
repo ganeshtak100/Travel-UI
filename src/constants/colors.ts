@@ -1,5 +1,5 @@
 export const COLORS = {
-  primary: 'blue',
+  primary: '#092473',
   black: '#000',
   darkGray: '#424242',
   lightGray: '#E6E6E6',
@@ -8,4 +8,11 @@ export const COLORS = {
   shadeGray: '#F9F9F9',
   darkBlue: '#280046',
   white: '#FFFFFF',
+  lightBlue:"#3B518B",
+  light_Blue:"#8A93B8",
+  mutedBlue :"#315563",
+  mossGreen:"#B1CE7D",
+  grayLight:"#E6EBEF",
+  shadeGray:"#EEF3EF"
+
 };

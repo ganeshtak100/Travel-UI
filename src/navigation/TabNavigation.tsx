@@ -9,12 +9,10 @@ import Profile from '@screens/Profile';
 import Saved from '@screens/Saved';
 import React, {memo} from 'react';
 import {Text, View} from 'react-native';
-// import {CustomTab} from './CustomTab';
 import {CustomBottomTab} from './CustomTab';
 import {styling} from './styles';
 
 const Tab = createBottomTabNavigator<AppParamList>();
-// const Stack = createStackNavigator<ROUTES_PARAMS>();
 interface ITabBarIconParams {
   focused?: boolean;
   color?: string;
@@ -43,76 +41,27 @@ const TabNavigation = () => {
       <Tab.Screen
         name={ROUTES.HOME}
         component={Home}
-        // options={{
-        //   tabBarLabel: 'Home',
-        //   headerShown: false,
-        //   lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.Home color={focused ? COLORS.primary : COLORS.darkGray} />
-        //     );
-        //   },
-        // }}
+    
       />
       <Tab.Screen
         name={ROUTES.EXPLORE}
         component={Explore}
-        // options={{
-        //   tabBarLabel: 'Explore',
-        //   headerShown: false,
-        //   lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.Explore
-        //         color={focused ? COLORS.primary : COLORS.darkGray}
-        //       />
-        //     );
-        //   },
-        // }}
+    
       />
       <Tab.Screen
         name={ROUTES.LIVE_EVENTS}
         component={LiveEvent}
-        options={{
-          tabBarLabel: 'Live Events',
-          headerShown: false,
-          lazy: false,
-          tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-            return (
-              <Icons.Event color={focused ? COLORS.primary : COLORS.darkGray} />
-            );
-          },
-        }}
+   
       />
       <Tab.Screen
         name={ROUTES.SAVED}
         component={Saved}
-        // options={{
-        //   tabBarLabel: 'Saved',
-        //   headerShown: false,
-        //   lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.Saved color={focused ? COLORS.primary : COLORS.darkGray} />
-        //     );
-        //   },
-        // }}
+   
       />
       <Tab.Screen
         name={ROUTES.PROFILE}
         component={Profile}
-        // options={{
-        //   tabBarLabel: 'Profile',
-        //   headerShown: false,
-        //   lazy: false,
-        //   tabBarIcon: ({focused, color, size}: ITabBarIconParams) => {
-        //     return (
-        //       <Icons.Profile
-        //         color={focused ? COLORS.primary : COLORS.darkGray}
-        //       />
-        //     );
-        //   },
-        // }}
+  
       />
     </Tab.Navigator>
   );

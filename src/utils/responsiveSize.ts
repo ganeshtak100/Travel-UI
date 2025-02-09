@@ -1,7 +1,8 @@
 import {Dimensions, PixelRatio, Platform} from 'react-native';
 
 export const {width, height} = Dimensions.get('window');
-const screenWidth = width < height ? width : height;
+export const screenWidth = width < height ? width : height;
+
 
 export const responsiveSize = (size: number) => {
   const responsiveValue = screenWidth / 480;
