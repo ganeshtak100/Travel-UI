@@ -1,4 +1,4 @@
-import {Event, Explore, Home, LinearLine, Profile,Mountain,Desert,Sunrise,Menubar, Saved,SearchStar,SearchMenu,BalanceIcon,BellIcon,DownArrow,LocationMarker} from './Icons';
+import {Event, Explore, Home, LinearLine, Profile,Mountain,Temple,Desert,Sunrise,Menubar,EffilTower, Saved,SearchStar,SearchMenu,BalanceIcon,BellIcon,DownArrow,LocationMarker} from './Icons';
 
 export const Icons = {
   Home,
@@ -16,5 +16,7 @@ export const Icons = {
   Mountain,
   Desert,
   Sunrise,
-  Menubar
+  Menubar,
+  Temple,
+  EffilTower
 };

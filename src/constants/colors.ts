@@ -13,6 +13,7 @@ export const COLORS = {
   mutedBlue :"#315563",
   mossGreen:"#B1CE7D",
   grayLight:"#E6EBEF",
-  shadeGray:"#EEF3EF"
+  shadeGray:"#F2F2F2",
+  gray1:"#797979"
 
 };
