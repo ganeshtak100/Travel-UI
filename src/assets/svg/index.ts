@@ -1,4 +1,24 @@
-import {Event, Explore, Home, LinearLine, Profile,Mountain,Temple,Desert,Sunrise,Menubar,EffilTower, Saved,SearchStar,SearchMenu,BalanceIcon,BellIcon,DownArrow,LocationMarker} from './Icons';
+import {
+  BalanceIcon,
+  BellIcon,
+  Desert,
+  DownArrow,
+  EffilTower,
+  Event,
+  Explore,
+  Home,
+  LinearLine,
+  LocationMarker,
+  Map,
+  Menubar,
+  Mountain,
+  Profile,
+  Saved,
+  SearchMenu,
+  SearchStar,
+  Sunrise,
+  Temple,
+} from './Icons';
 
 export const Icons = {
   Home,
@@ -18,5 +38,6 @@ export const Icons = {
   Sunrise,
   Menubar,
   Temple,
-  EffilTower
+  EffilTower,
+  Map,
 };

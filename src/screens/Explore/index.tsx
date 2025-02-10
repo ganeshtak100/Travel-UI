@@ -1,6 +1,7 @@
 import {Icons} from '@assets/svg';
 import {COLORS} from '@constants/colors';
 import {Fonts} from '@constants/fonts';
+import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 import {
   normalize,
   respFontSize,
@@ -18,6 +19,7 @@ import {
   View,
 } from 'react-native';
 import ImageSlider from './ImageSlider';
+import SkeletonLoader from './SkelentonLoader';
 const tabs = [
   {
     id: '1',
@@ -54,7 +56,18 @@ const Explore = () => {
   const [text, setText] = React.useState('');
   const [activeTab, setActiveTab] = useState(0); // Active tab state
   const [underlinePosition] = useState(new Animated.Value(0)); // Animated value for underline
-
+  const [isLoading, setLoading] = useState(true);
+  const isFocused = useIsFocused();
+  useFocusEffect(
+    React.useCallback(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 800);
+      return () => {
+        setLoading(true);
+      };
+    }, []),
+  );
   const SearchBar = () => {
     return (
       <View
@@ -287,19 +300,49 @@ const Explore = () => {
       }}>
       {SearchBar()}
       {CustomTabBar()}
-      <FlatList
-        data={data}
-        renderItem={RenderItem}
-        keyExtractor={(item, index) => index.toString()}
-        contentContainerStyle={{
-          paddingBottom: normalize(20),
-          paddingHorizontal: 16,
-          gap: 12,
-          paddingTop: 16,
-          flexGrow: 1,
-        }}
-        showsVerticalScrollIndicator={false}
-      />
+      {isLoading ? (
+        <SkeletonLoader count={3} />
+      ) : (
+        <FlatList
+          data={data}
+          renderItem={RenderItem}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{
+            paddingBottom: normalize(20),
+            paddingHorizontal: 16,
+            gap: 12,
+            paddingTop: 16,
+            flexGrow: 1,
+          }}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+      {!isLoading && (
+        <TouchableOpacity
+          style={{
+            paddingHorizontal: 18,
+            paddingVertical: 3,
+            borderRadius: 16,
+            backgroundColor: COLORS.primary,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+            position: 'absolute',
+            bottom: 10,
+            flexDirection: 'row',
+            gap: 3,
+          }}>
+          <Icons.Map color={COLORS.white} width={18} />
+          <Text
+            style={{
+              fontSize: respFontSize(8),
+              color: COLORS.white,
+              fontFamily: Fonts.PoppinsSemibold,
+            }}>
+            Map
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
