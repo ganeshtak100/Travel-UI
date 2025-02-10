@@ -1,26 +1,19 @@
 import {COLORS} from '@constants/colors';
+import {screenWidth} from '@utils/responsiveSize';
 import React, {useState} from 'react';
-import {
-  View,
-  FlatList,
-  Image,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Animated,
-  TouchableOpacity,
-} from 'react-native';
+import {Animated, Dimensions, StyleSheet, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {FlatList} from 'react-native-gesture-handler';
 
 const {width, height} = Dimensions.get('window'); // Get the screen width and height
 
-const ImageSlider = ({images}) => {
+const ImageSlider = ({images}: any) => {
   const [currentIndex, setCurrentIndex] = useState(0); // State to track the active slide
   const [underlinePosition] = useState(new Animated.Value(0)); // Animated value for the indicator
   const scrollX = new Animated.Value(0);
 
   // Function to update the active index and move the indicator
-  const onViewableItemsChanged = ({viewableItems}) => {
+  const onViewableItemsChanged = ({viewableItems}: any) => {
     if (viewableItems.length > 0) {
       const newIndex = viewableItems[0].index;
       setCurrentIndex(newIndex);
@@ -34,10 +27,16 @@ const ImageSlider = ({images}) => {
 
   // Render function for each image item
   const renderItem = ({item}) => {
-    console.log('item', item,images);
+    console.log('item', item, images);
     return (
-      <View style={styles.imageWrapper}>
-        <FastImage source={{uri:item.image}} style={styles.image} resizeMode='cover' />
+      <View style={styles.imageContainer}>
+        <View style={styles.imageWrapper}>
+          <FastImage
+            source={{uri: item.image}}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
       </View>
     );
   };
@@ -67,9 +66,7 @@ const ImageSlider = ({images}) => {
                 currentIndex === index ? styles.activeDot : styles.inactiveDot,
                 {
                   transform: [{scale: dotScale}],
-                  backgroundColor: isActive
-                    ? COLORS.white
-                    : COLORS.light_Blue,
+                  backgroundColor: isActive ? COLORS.white : COLORS.light_Blue,
                   width: isActive ? 28 : 6, // Make the active dot longer
                   alignSelf: 'center',
                   height: 6,
@@ -81,7 +78,6 @@ const ImageSlider = ({images}) => {
       </View>
     );
   };
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -91,11 +87,10 @@ const ImageSlider = ({images}) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
-        // onViewableItemsChanged={onViewableItemsChanged}
-        // viewabilityConfig={{viewAreaCoveragePercentThreshold: 50}}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={{viewAreaCoveragePercentThreshold: 50}}
         contentContainerStyle={{flexGrow: 1}}
       />
-
       {renderIndicator()}
     </View>
   );
@@ -106,10 +101,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    // flex:1
   },
   carousel: {
     marginBottom: 10,
+  },
+  imageContainer: {
+    width: screenWidth - 32,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   imageWrapper: {
     width: '100%',
@@ -128,23 +127,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    right:30
+    right: 30,
   },
-  //   dot: {
-  //     width: 8,
-  //     height: 8,
-  //     borderRadius: 4,
-  //     backgroundColor: 'gray',
-  //     margin: 5,
-  //   },
   dot: {
     height: 10,
     width: 10,
     borderRadius: 5,
   },
-  //   activeDot: {
-  //     backgroundColor: 'black', // Active dot color
-  //   },
   activeDot: {
     backgroundColor: COLORS.lightGray,
     width: 20,
